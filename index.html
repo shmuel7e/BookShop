@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shmuel's Book Shop ~ </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="bookstyle.css">
+</head>
+
+<body onload="init()">
+    <div class="foreground">
+        <div class="midground">
+            <div class="tuna"> </div>
+            <div class="header" data-trans="title"> Shmuel's Book Shop </div>
+            <div class="books-body">
+                <div class="books-container">
+                    <div class="add-book-modal" hidden>
+                        <span class="close" onclick="onCloseModal()">X</span>
+                        <h3 class="title" data-trans="h3BookDetails">Book Details:</h3>
+                        <img class="book-details-img"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9D5pR9sujtptW33kw3B34LeizuPZnmYqwj87cRwJDwhb1U9Lb4A&s"
+                            alt="title" height="100px">
+                        <div> <input class="book-title" placeholder="Book" data-trans="tableTitle"> </div>
+                        <div> <input class="author" placeholder="Author" data-trans="tableAuthor"></div>
+                        <div><input class="price" placeholder="Price" data-trans="tablePrice"></div>
+                        <div> <input class="bookIMG" placeholder="Book IMG URL" data-trans="urlPlaceholder"></div>"
+                        <div> <button type="button" class="btn btn-secondary" onclick="onAddBook()"
+                                data-trans="addBook">Add Book</button>
+                        </div>
+                    </div>
+
+                    <div class="update-book-modal" hidden>
+                        <span class="close" onclick="onCloseModal()">X</span>
+                        <h3 class="title" data-trans="h3BookDetails">Book Details:</h3>
+                        <img class="book-details-img"
+                            src="https://i1.pickpik.com/photos/850/506/347/reading-book-cat-literature-preview.jpg"
+                            alt="title" height="100px">
+                        <div><input class="price-update" placeholder="Price" data-trans="pricePlaceholder"></div>
+                        <div> <input class="bookIMG-update" placeholder="Book IMG URL" data-trans="urlPlaceholder">
+                        </div>
+                        <div> <button type="button" class="btn btn-secondary" onclick="onUpdateBook()"
+                                data-trans="updateButton">Update
+                                Book</button>
+                        </div>
+                    </div>
+
+
+                    <div class="read-book-modal fade-in" hidden>
+                        <span class="close" onclick="onCloseModal()">X</span>
+                        <h3 class="title" data-trans="bookDetails">Book Details:</h3>
+                        <p class="show-title"></p>
+                        <p class="show-author"></p>
+                        <p class="show-price" data-trans="bookPrice"> Price</p>
+                        <p class="show-img"></p>
+                        <p>RATE ME!<select class="show-rate" onchange="onRate(this)">RATE ME
+                                <option value="selected-rating" id="rating"></option>
+                                <option value="one-star">⭐</option>
+                                <option value="two-stars">⭐⭐</option>
+                                <option value="three-stars">⭐⭐⭐</option>
+                                <option value="four-stars">⭐⭐⭐⭐</option>
+                                <option value="five-stars">⭐⭐⭐⭐⭐</option>
+                            </select>
+                        </p>
+
+
+                    </div>
+                    <button type="button" class="btn btn-light" onclick="onPrevPage()" data-trans="prevPage">Previous
+                        Page</button>
+                    <button type="button" class="btn btn-dark" onclick="onNextPage()" data-trans="nextPage">Next
+                        Page</button>
+
+                    <select class="select-css" onchange="onSetLang(this)">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="he">Hebrew</option>
+                    </select>
+
+                    <div class="table-container">
+                        <table class="table table-hover table-dark">
+                            <thead class="table-head">
+                                <tr>
+                                    <th class="table-id" value="id" onclick="onSort('id')" data-trans="tableId">ID</th>
+                                    <th class="table-title" value="title" onclick="onSort('title')"
+                                        data-trans="tableTitle">
+                                        Title</th>
+                                    <th class="table-author" value="author" onclick="onSort('author')"
+                                        data-trans="tableAuthor">Author</th>
+                                    <th class="table-price" value="price" onclick="onSort('price')"
+                                        data-trans="tablePrice">
+                                        price</th>
+                                    <th colspan="3" data-trans="tableActions">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="books-table">
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-dark" onclick="onAddNewBook()" data-trans="addBook">Add
+                        Book</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="background"> </div>
+    <script src="js/hammer.min.js"></script>
+    <script src="js/booksStorage.js"></script>
+    <script src="js/booksi18nService.js"></script>
+    <script src="js/booksUtils.js"></script>
+    <script src="js/booksController.js"></script>
+    <script src="js/booksService.js"></script>
+</body>
+
+</html>
